@@ -17,6 +17,38 @@
   --sh-entity: #e25a1c;
 }
 
+@theme {
+  --animate-bg-one: bg-one 1s ease-in-out infinite alternate;
+  @keyframes bg-one {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  --animate-bg-two: bg-two 3s ease-in-out infinite alternate 3s;
+  @keyframes bg-one {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  --animate-bg-three: bg-three 3s ease-in-out infinite alternate 6s;
+  @keyframes bg-three {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --sh-class: #4c97f8;

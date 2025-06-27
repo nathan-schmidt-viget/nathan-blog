@@ -53,6 +53,9 @@ export default function RootLayout({
           <Analytics />
           <SpeedInsights />
         </main>
+        <div className='absolute animate-bg-three inset-0 bg-gradient-to-t from-cyan-50 to-gray-100 dark:from-cyan-950 dark:to-black/60' />
+        <div className='absolute animate-bg-two inset-0 bg-gradient-to-t from-pink-50 to-gray-100 dark:from-pink-950 dark:to-black/60' />
+        <div className='absolute animate-bg-one inset-0 bg-gradient-to-t from-orange-50 to-gray-100 dark:from-orange-950 dark:to-black/60' />
       </body>
     </html>
   );

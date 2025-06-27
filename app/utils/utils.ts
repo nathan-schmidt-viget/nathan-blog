@@ -79,12 +79,30 @@ function getProjectMDXData(dir) {
   });
 }
 
+function getAboutMDXData(dir) {
+  let mdxFiles = getMDXFiles(dir);
+  return mdxFiles.map((file) => {
+    let { metadata, content } = readMDXFile(path.join(dir, file));
+    let slug = path.basename(file, path.extname(file));
+
+    return {
+      metadata: metadata as ProjectMetadata,
+      slug,
+      content,
+    };
+  });
+}
+
 export function getBlogPosts() {
   return getBlogMDXData(path.join(process.cwd(), "app", "blog", "posts"));
 }
 
 export function getProjects() {
   return getProjectMDXData(path.join(process.cwd(), "app", "projects", "work"));
+}
+
+export function getAbout() {
+  return getAboutMDXData(path.join(process.cwd(), "app", "content"));
 }
 
 export function formatDate(date: string, includeRelative = false) {
