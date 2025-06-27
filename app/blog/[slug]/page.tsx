@@ -92,10 +92,20 @@ export default function Blog({ params }) {
         <p className='text-sm text-neutral-600 dark:text-neutral-400'>
           {post.metadata.summary}
         </p>
+        <a
+          href={post.metadata.url}
+          target='_blank'
+          className='inline-block text-center bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 px-2 py-1 rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all duration-300'
+          rel='noopener noreferrer'
+        >
+          View Article
+        </a>
       </div>
-      <article className='prose border-y border-neutral-200 dark:border-neutral-800 py-8'>
-        <CustomMDX source={post.content} />
-      </article>
+      {post.content && (
+        <article className='prose border-y border-neutral-200 dark:border-neutral-800 py-8'>
+          <CustomMDX source={post.content} />
+        </article>
+      )}
     </section>
   );
 }

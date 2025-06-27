@@ -7,6 +7,7 @@ type Metadata = {
   summary: string;
   role: string;
   tech: string;
+  url: string;
   image?: string;
 };
 

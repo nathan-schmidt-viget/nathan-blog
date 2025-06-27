@@ -86,13 +86,21 @@ export default function Projects({ params }) {
         {post.metadata.title}
       </h1>
       <div className='grid grid-cols-3 items-start mt-2 gap-3 mb-8 text-sm'>
-        <div className='col-span-2'>
+        <div className='col-span-2 flex flex-col items-start gap-2'>
           <p className='text-sm text-neutral-600 dark:text-neutral-400'>
             {formatDate(post.metadata.publishedAt)}
           </p>
-          <p className='text-sm text-neutral-600 dark:text-neutral-400'>
+          <p className='text-sm text-neutral-600 dark:text-neutral-400 text-pretty'>
             {post.metadata.summary}
           </p>
+          <a
+            href={post.metadata.url}
+            target='_blank'
+            className='inline-block text-center bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 px-2 py-1 rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all duration-300'
+            rel='noopener noreferrer'
+          >
+            View Project
+          </a>
         </div>
         <div className='col-span-1 flex flex-col gap-2'>
           <p className='text-sm text-neutral-600 dark:text-neutral-400'>
@@ -103,9 +111,11 @@ export default function Projects({ params }) {
           </p>
         </div>
       </div>
-      <article className='prose border-y border-neutral-200 dark:border-neutral-800 py-8'>
-        <CustomMDX source={post.content} />
-      </article>
+      {post.content && (
+        <div className='prose border-y border-neutral-200 dark:border-neutral-800 py-8'>
+          <CustomMDX source={post.content} />
+        </div>
+      )}
     </section>
   );
 }
