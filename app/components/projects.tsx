@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatDate, getProjects } from "app/projects/utils";
+import { formatDate, getProjects } from "../projects/utils";
 
 export function Projects() {
   let allProjects = getProjects();

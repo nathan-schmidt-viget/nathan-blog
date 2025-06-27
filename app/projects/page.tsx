@@ -1,4 +1,9 @@
-import { Projects } from "app/components/projects";
+import { Projects } from "../components/projects";
+
+export const metadata = {
+  title: "Projects",
+  description: "A collection of my projects and work.",
+};
 
 export default function Page() {
   return (
