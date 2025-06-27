@@ -1,5 +1,4 @@
-import { getBlogPosts } from "app/blog/utils";
-import { getProjects } from "./projects/utils";
+import { getBlogPosts, getProjects } from "app/utils/utils";
 
 export const baseUrl = "https://nathanschmidt.netlify.app";
 

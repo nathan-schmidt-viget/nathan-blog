@@ -1,7 +1,20 @@
 import fs from "fs";
 import path from "path";
 
-type Metadata = {
+type AboutMetadata = {
+  title: string;
+  publishedAt: string;
+};
+
+type BlogMetadata = {
+  title: string;
+  publishedAt: string;
+  summary: string;
+  url: string;
+  image?: string;
+};
+
+type ProjectMetadata = {
   title: string;
   publishedAt: string;
   summary: string;
@@ -17,16 +30,16 @@ function parseFrontmatter(fileContent: string) {
   let frontMatterBlock = match![1];
   let content = fileContent.replace(frontmatterRegex, "").trim();
   let frontMatterLines = frontMatterBlock.trim().split("\n");
-  let metadata: Partial<Metadata> = {};
+  let metadata: Record<string, string> = {};
 
   frontMatterLines.forEach((line) => {
     let [key, ...valueArr] = line.split(": ");
     let value = valueArr.join(": ").trim();
     value = value.replace(/^['"](.*)['"]$/, "$1"); // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value;
+    metadata[key.trim()] = value;
   });
 
-  return { metadata: metadata as Metadata, content };
+  return { metadata, content };
 }
 
 function getMDXFiles(dir) {
@@ -38,22 +51,40 @@ function readMDXFile(filePath) {
   return parseFrontmatter(rawContent);
 }
 
-function getMDXData(dir) {
+function getBlogMDXData(dir) {
   let mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     let { metadata, content } = readMDXFile(path.join(dir, file));
     let slug = path.basename(file, path.extname(file));
 
     return {
-      metadata,
+      metadata: metadata as BlogMetadata,
       slug,
       content,
     };
   });
 }
 
+function getProjectMDXData(dir) {
+  let mdxFiles = getMDXFiles(dir);
+  return mdxFiles.map((file) => {
+    let { metadata, content } = readMDXFile(path.join(dir, file));
+    let slug = path.basename(file, path.extname(file));
+
+    return {
+      metadata: metadata as ProjectMetadata,
+      slug,
+      content,
+    };
+  });
+}
+
+export function getBlogPosts() {
+  return getBlogMDXData(path.join(process.cwd(), "app", "blog", "posts"));
+}
+
 export function getProjects() {
-  return getMDXData(path.join(process.cwd(), "app", "projects", "work"));
+  return getProjectMDXData(path.join(process.cwd(), "app", "projects", "work"));
 }
 
 export function formatDate(date: string, includeRelative = false) {

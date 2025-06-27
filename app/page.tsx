@@ -1,4 +1,5 @@
 import { BlogPosts } from "app/components/posts";
+import About from "app/components/about";
 
 export default function Page() {
   return (
@@ -12,32 +13,7 @@ export default function Page() {
         </h1>
       </div>
       <div className='flex flex-col gap-2'>
-        <p>
-          I'm a software engineer based in Colorado. I'm currently working at{" "}
-          <a
-            href='https://www.viget.com'
-            target='_blank'
-            className='underline hover:no-underline focus-visible:no-underline'
-            rel='noopener noreferrer'
-          >
-            Viget
-          </a>
-          .
-        </p>
-        <p>
-          I build UI components for sites and multi million dollar web
-          applications in collaboration with other developers and or
-          independently. I take high fidelity designs and developing them into
-          large design systems that can be used throughout the application.
-        </p>
-        <p>
-          I develop interactive UI components that meet accessibility standards
-          WCAG. I collaborate with stakeholders to gather feedback, refine
-          requirements, and align on project goals. I ensure that the UI
-          components effectively meet the needs of both users and business
-          objectives. I'm a quick learner and I'm always looking for new
-          challenges.
-        </p>
+        <About />
       </div>
       <div className='my-8'>
         <BlogPosts />
