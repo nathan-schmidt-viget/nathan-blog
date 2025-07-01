@@ -4,7 +4,7 @@ import { CustomMDX } from "app/components/mdx";
 export default function About() {
   const about = getAbout().find((post) => post.slug === "about");
   return (
-    <div className='prose text-pretty'>
+    <div className='prose text-pretty font-light'>
       {about && <CustomMDX source={about.content} />}
     </div>
   );

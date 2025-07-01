@@ -86,7 +86,7 @@ export default function Blog({ params }) {
         {post.metadata.title}
       </h1>
       <div className='flex flex-col items-start mt-2 gap-3 mb-8 text-sm'>
-        <p className='text-sm text-neutral-600 dark:text-neutral-400'>
+        <p className='text-sm text-neutral-600 dark:text-neutral-400 text-xs uppercase font-bold'>
           {formatDate(post.metadata.publishedAt)}
         </p>
         <p className='text-sm text-neutral-600 dark:text-neutral-400'>

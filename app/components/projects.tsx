@@ -5,7 +5,7 @@ export function Projects() {
   let allProjects = getProjects();
 
   return (
-    <div>
+    <div className='flex flex-col gap-4'>
       {allProjects
         .sort((a, b) => {
           if (
@@ -18,7 +18,7 @@ export function Projects() {
         .map((post) => (
           <Link
             key={post.slug}
-            className='flex flex-col space-y-1 mb-4'
+            className='flex flex-col hover:underline focus-visible:underline'
             href={`/projects/${post.slug}`}
           >
             <div className='w-full flex flex-col md:flex-row space-x-0 md:space-x-2'>
