@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 const navItems = {
   "/": {
@@ -13,6 +17,7 @@ const navItems = {
 };
 
 export function Navbar() {
+  const pathname = usePathname();
   return (
     <header className='-ml-[8px] mb-16 tracking-tight'>
       <div className='lg:sticky lg:top-20'>
@@ -27,7 +32,10 @@ export function Navbar() {
                   <Link
                     key={path}
                     href={path}
-                    className='transition-all hover:text-neutral-800 hover:underline focus-visible:underline dark:hover:text-neutral-200 flex align-middle relative py-1 px-2'
+                    className={clsx(
+                      "transition-all hover:text-neutral-800 hover:underline focus-visible:underline dark:hover:text-neutral-200 flex align-middle relative py-1 px-2",
+                      pathname === path && "underline"
+                    )}
                   >
                     {name}
                   </Link>

@@ -6,7 +6,7 @@ export default function Page() {
     <section className='flex flex-col gap-4'>
       <div className='flex flex-col gap-2'>
         <p className='text-sm text-neutral-600 dark:text-neutral-400'>
-          Senior UI Developer
+          Senior Web Developer
         </p>
         <h1 className='text-5xl font-bold tracking-tighter font-stretch-extra-condensed'>
           Nathan Schmidt

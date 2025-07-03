@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "app/components/mdx";
 import { formatDate, getProjects } from "../../utils/utils";
 import { baseUrl } from "app/sitemap";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   let posts = getProjects();
@@ -33,7 +34,7 @@ export function generateMetadata({ params }) {
     openGraph: {
       title,
       description,
-      type: "article",
+      type: "blog",
       publishedTime,
       url: `${baseUrl}/projects/${post.slug}`,
       images: [
@@ -93,14 +94,14 @@ export default function Projects({ params }) {
           <p className='text-sm text-neutral-600 dark:text-neutral-400 text-pretty'>
             {post.metadata.summary}
           </p>
-          <a
+          <Link
             href={post.metadata.url}
             target='_blank'
             className='inline-block text-center bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 px-2 py-1 rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all duration-300'
             rel='noopener noreferrer'
           >
             View Project
-          </a>
+          </Link>
         </div>
         <div className='col-span-1 flex flex-col gap-2'>
           <p className='text-sm text-neutral-600 dark:text-neutral-400'>

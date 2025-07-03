@@ -1,34 +1,48 @@
 {
   "clients": [
     {
-      "name": "OtterBox"
+      "name": "OtterBox",
+      "url": "https://www.otterbox.com/"
     },
     {
-      "name": "Toddy Cold Brew"
+      "name": "Toddy Cold Brew",
+      "url": "https://toddycafe.com/"
     },
     {
-      "name": "Colorado State University"
+      "name": "Colorado State University",
+      "url": "https://www.colostate.edu/"
     },
     {
-      "name": "Human Rights Campaign"
+      "name": "Human Rights Campaign",
+      "url": "https://www.hrc.org/"
     },
     {
-      "name": "Ad Council"
+      "name": "Ad Council",
+      "url": "https://www.adcouncil.org/"
     },
     {
-      "name": "Seth Godin"
+      "name": "Seth Godin",
+      "url": "https://sethgodin.com/"
     },
     {
-      "name": "International Association of Fire Fighters"
+      "name": "International Association of Fire Fighters",
+      "url": "https://iaff.org/"
     },
     {
-      "name": "Downtown Fort Collins"
+      "name": "Downtown Fort Collins",
+      "url": "https://downtownfortcollins.org/"
     },
     {
-      "name": "Bohemian Foundation"
+      "name": "Bohemian Foundation",
+      "url": "https://bohemianfoundation.org/"
     },
     {
-      "name": "Mishawaka Amphitheatre"
+      "name": "Mishawaka Amphitheatre",
+      "url": "https://www.visitftcollins.com/listing/mishawaka-amphitheatre/453/"
+    },
+    {
+      "name": "Canyon Bakehouse",
+      "url": "https://canyonglutenfree.com/"
     }
   ]
 }
