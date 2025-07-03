@@ -1,0 +1,34 @@
+{
+  "clients": [
+    {
+      "name": "OtterBox"
+    },
+    {
+      "name": "Toddy Cold Brew"
+    },
+    {
+      "name": "Colorado State University"
+    },
+    {
+      "name": "Human Rights Campaign"
+    },
+    {
+      "name": "Ad Council"
+    },
+    {
+      "name": "Seth Godin"
+    },
+    {
+      "name": "International Association of Fire Fighters"
+    },
+    {
+      "name": "Downtown Fort Collins"
+    },
+    {
+      "name": "Bohemian Foundation"
+    },
+    {
+      "name": "Mishawaka Amphitheatre"
+    }
+  ]
+}

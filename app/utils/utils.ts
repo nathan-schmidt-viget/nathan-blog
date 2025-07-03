@@ -21,6 +21,7 @@ type ProjectMetadata = {
   role: string;
   tech: string;
   url: string;
+  award?: string;
   image?: string;
 };
 

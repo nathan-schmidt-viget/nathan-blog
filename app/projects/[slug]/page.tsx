@@ -106,6 +106,11 @@ export default function Projects({ params }) {
           <p className='text-sm text-neutral-600 dark:text-neutral-400'>
             {post.metadata.role}
           </p>
+          {post.metadata.award && (
+            <p className='text-sm text-neutral-600 dark:text-neutral-400'>
+              {post.metadata.award}
+            </p>
+          )}
           <p className='text-sm text-neutral-600 dark:text-neutral-400'>
             {post.metadata.tech}
           </p>
