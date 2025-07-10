@@ -1,11 +1,11 @@
 import { getAbout } from "../utils/utils";
-import { CustomMDX } from "app/components/mdx";
+import { SimpleMDX } from "../utils/simple-mdx";
 
 export default function About() {
   const about = getAbout().find((post) => post.slug === "about");
   return (
-    <div className='prose text-pretty font-light'>
-      {about && <CustomMDX source={about.content} />}
+    <div className='font-light prose text-pretty'>
+      {about && <SimpleMDX source={about.content} />}
     </div>
   );
 }
