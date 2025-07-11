@@ -18,6 +18,7 @@ export default function Page() {
       <div className='my-8'>
         <BlogPosts />
       </div>
+      <div className='my-8'>{/* <GithubRepos /> */}</div>
     </section>
   );
 }

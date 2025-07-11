@@ -1,4 +1,5 @@
 import { Projects } from "../components/projects";
+import GithubRepos from "../components/github-repos";
 
 export const metadata = {
   title: "Projects",
@@ -7,11 +8,14 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <section>
-      <h1 className='font-semibold text-2xl mb-8 tracking-tighter'>
-        Featured Projects
-      </h1>
-      <Projects />
+    <section className='flex flex-col gap-12'>
+      <div>
+        <h1 className='font-semibold text-2xl mb-4 tracking-tighter'>
+          Featured Projects
+        </h1>
+        <Projects />
+      </div>
+      <GithubRepos />
     </section>
   );
 }
