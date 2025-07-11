@@ -43,6 +43,11 @@ export default async function GithubRepos() {
     query: gql`
       {
         user(login: "nathan-schmidt-viget") {
+          contributionsCollection {
+            contributionCalendar {
+              totalContributions
+            }
+          }
           pinnedItems(first: 6) {
             totalCount
             edges {
@@ -77,7 +82,13 @@ export default async function GithubRepos() {
 
   return (
     <div className='flex flex-col gap-4'>
-      <h2 className='text-2xl font-bold tracking-tighter'>GitHub Projects</h2>
+      <div className='flex flex-wrap items-end gap-4'>
+        <h2 className='text-2xl font-bold tracking-tighter'>GitHub Projects</h2>
+        <p className='text-sm text-neutral-500 dark:text-neutral-500'>
+          {user.contributionsCollection.contributionCalendar.totalContributions.toLocaleString()}{" "}
+          contributions in the last year
+        </p>
+      </div>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
         {pinnedItems.map((repo) => (
           <Link
