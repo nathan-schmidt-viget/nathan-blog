@@ -78,7 +78,7 @@ html {
 }
 
 .prose a {
-  @apply underline text-neutral-800 dark:text-neutral-200 transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply underline text-neutral-800 dark:text-neutral-200 transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 hover:decoration-neutral-600 dark:hover:decoration-neutral-200;
 }
 
 .prose .anchor:after {
