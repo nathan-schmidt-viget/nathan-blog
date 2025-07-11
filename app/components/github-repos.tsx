@@ -78,8 +78,6 @@ export default async function GithubRepos() {
   const { user } = data;
   const pinnedItems = user.pinnedItems.edges.map(({ node }) => node);
 
-  console.log(pinnedItems);
-
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex flex-wrap items-end gap-4'>
