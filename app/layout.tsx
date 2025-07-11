@@ -58,9 +58,9 @@ export default function RootLayout({
           <Analytics />
           <SpeedInsights />
         </main>
-        <div className='fixed animate-bg-three h-[calc(100dvh-50rem)] inset-x-0 bottom-0 bg-gradient-to-t from-cyan-300 to-white dark:from-cyan-900 dark:to-black/60' />
-        <div className='fixed animate-bg-two h-[calc(100dvh-50rem)] inset-x-0 bottom-0 bg-gradient-to-t from-pink-300 to-white dark:from-pink-900 dark:to-black/60' />
-        <div className='fixed animate-bg-one h-[calc(100dvh-50rem)] inset-x-0 bottom-0 bg-gradient-to-t from-orange-300 to-white dark:from-orange-900 dark:to-black/60' />
+        <div className='fixed animate-bg-three h-[calc(100dvh-50rem)] inset-x-0 bottom-0 bg-gradient-to-t from-cyan-100 to-white dark:from-cyan-900 dark:to-black/60' />
+        <div className='fixed animate-bg-two h-[calc(100dvh-50rem)] inset-x-0 bottom-0 bg-gradient-to-t from-green-100 to-white dark:from-pink-900 dark:to-black/60' />
+        <div className='fixed animate-bg-one h-[calc(100dvh-50rem)] inset-x-0 bottom-0 bg-gradient-to-t from-orange-100 to-white dark:from-orange-900 dark:to-black/60' />
       </body>
     </html>
   );
