@@ -21,11 +21,11 @@ export function BlogPosts() {
             className='flex flex-col hover:underline focus-visible:underline'
             href={`/blog/${post.slug}`}
           >
-            <div className='w-full grid grid-cols-4 items-center'>
-              <p className='text-neutral-600 dark:text-neutral-400 text-xs uppercase font-bold'>
+            <div className='w-full grid grid-cols-4 gap-2 items-center'>
+              <p className='text-neutral-600 dark:text-neutral-400 col-span-4 sm:col-span-1 text-xs uppercase font-bold'>
                 {formatDate(post.metadata.publishedAt, false)}
               </p>
-              <p className='text-neutral-900 dark:text-neutral-100 col-span-3 tracking-tight'>
+              <p className='text-neutral-900 dark:text-neutral-100 col-span-4 sm:col-span-3 tracking-tight'>
                 {post.metadata.title}
               </p>
             </div>

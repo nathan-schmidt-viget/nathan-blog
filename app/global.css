@@ -20,7 +20,7 @@
 @theme {
   --font-public-sans: var(--font-public-sans), "Public Sans", sans-serif;
 
-  --animate-bg-one: bg-one 1s ease-in-out infinite alternate;
+  --animate-bg-one: bg-one 6s ease-in-out infinite alternate;
   @keyframes bg-one {
     0% {
       opacity: 1;
@@ -30,7 +30,7 @@
     }
   }
 
-  --animate-bg-two: bg-two 3s ease-in-out infinite alternate 3s;
+  --animate-bg-two: bg-two 6s ease-in-out infinite alternate 12s;
   @keyframes bg-one {
     0% {
       opacity: 1;
@@ -40,7 +40,7 @@
     }
   }
 
-  --animate-bg-three: bg-three 3s ease-in-out infinite alternate 6s;
+  --animate-bg-three: bg-three 6s ease-in-out infinite alternate 24s;
   @keyframes bg-three {
     0% {
       opacity: 1;
@@ -52,12 +52,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
   html {
     color-scheme: dark;
   }
@@ -84,7 +78,7 @@ html {
 }
 
 .prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply underline text-neutral-800 dark:text-neutral-200 transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
 }
 
 .prose .anchor:after {

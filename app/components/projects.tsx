@@ -18,6 +18,7 @@ export function Projects() {
         })
         .map((post) => (
           <Link
+            key={post.slug}
             className='flex flex-col gap-2 items-start group'
             href={`/projects/${post.slug}`}
           >

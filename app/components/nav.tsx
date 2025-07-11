@@ -31,12 +31,12 @@ export function Navbar() {
           <ul className='flex flex-row gap-2'>
             {Object.entries(navItems).map(([path, { name }]) => {
               return (
-                <li>
+                <li key={path}>
                   <Link
                     key={path}
                     href={path}
                     className={clsx(
-                      "transition-all hover:text-neutral-800 hover:underline focus-visible:underline dark:hover:text-neutral-200 flex align-middle relative py-1 px-2",
+                      "transition-all hover:text-neutral-800 hover:underline underline-offset-6 focus-visible:underline dark:hover:text-neutral-200 flex align-middle relative py-1 px-2",
                       pathname === path && "underline"
                     )}
                   >
