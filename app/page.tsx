@@ -1,7 +1,7 @@
 import { BlogPosts } from "app/components/posts";
 import About from "app/components/about";
 
-export default function Page() {
+export default function Page(): JSX.Element {
   return (
     <section className='flex flex-col gap-4'>
       <div className='flex flex-col gap-2'>

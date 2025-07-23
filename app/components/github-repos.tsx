@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default async function GithubRepos() {
+export default async function GithubRepos(): Promise<JSX.Element> {
   try {
     const response = await fetch(
       `${
@@ -18,7 +18,6 @@ export default async function GithubRepos() {
         response.status,
         response.statusText
       );
-      return <div>Failed to load GitHub projects</div>;
     }
 
     const data = await response.json();

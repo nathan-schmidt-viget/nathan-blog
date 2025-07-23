@@ -1,7 +1,7 @@
 import Link from "next/link";
 import clients from "../projects/clients.json";
 
-export default function Clients() {
+export default function Clients(): JSX.Element {
   return (
     <ul className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4'>
       {clients.clients

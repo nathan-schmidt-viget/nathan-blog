@@ -1,8 +1,6 @@
 import "./global.css";
 import type { Metadata } from "next";
 import { Navbar } from "./components/nav";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
 import localFont from "next/font/local";
@@ -41,13 +39,13 @@ export const metadata: Metadata = {
   },
 };
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
+const cx = (...classes: string[]): string => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+}): JSX.Element {
   return (
     <html lang='en' className={cx(publicSans.variable, "font-public-sans")}>
       <body className='text-black bg-white dark:text-white dark:bg-black'>
@@ -55,8 +53,6 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
-          <Analytics />
-          <SpeedInsights />
         </main>
         <div className='fixed animate-bg-three h-[calc(100dvh-50rem)] inset-x-0 bottom-0 bg-gradient-to-t from-cyan-100 to-white dark:from-cyan-900 dark:to-black/60' />
         <div className='fixed animate-bg-two h-[calc(100dvh-50rem)] inset-x-0 bottom-0 bg-gradient-to-t from-green-100 to-white dark:from-pink-900 dark:to-black/60' />

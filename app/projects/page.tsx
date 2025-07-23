@@ -6,7 +6,7 @@ export const metadata = {
   description: "A collection of my projects and work.",
 };
 
-export default function Page() {
+export default function Page(): JSX.Element {
   return (
     <section className='flex flex-col gap-12'>
       <div>

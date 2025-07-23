@@ -14,12 +14,9 @@ const navItems = {
   "/projects": {
     name: "Projects",
   },
-  // "/code": {
-  //   name: "Code",
-  // },
 };
 
-export function Navbar() {
+export function Navbar(): JSX.Element {
   const pathname = usePathname();
   return (
     <header className='-ml-[8px] mb-16 tracking-tight'>

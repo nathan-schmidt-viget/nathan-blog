@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getProjects } from "../utils/utils";
 
-export function Projects() {
+export function Projects(): JSX.Element {
   let allProjects = getProjects();
 
   return (

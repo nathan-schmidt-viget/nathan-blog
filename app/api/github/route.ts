@@ -6,7 +6,7 @@ import {
 } from "@apollo/client";
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request): Promise<NextResponse> {
+export async function POST(): Promise<NextResponse> {
   // Check if GitHub token is available
   if (!process.env.GITHUB_TOKEN) {
     console.warn("GitHub token not available");
