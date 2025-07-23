@@ -7,6 +7,15 @@ import {
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request): Promise<NextResponse> {
+  // Check if GitHub token is available
+  if (!process.env.GITHUB_TOKEN) {
+    console.warn("GitHub token not available");
+    return NextResponse.json(
+      { error: "GitHub token not configured" },
+      { status: 500 }
+    );
+  }
+
   try {
     const client = new ApolloClient({
       link: createHttpLink({
@@ -16,12 +25,6 @@ export async function POST(request: Request): Promise<NextResponse> {
         },
       }),
       cache: new InMemoryCache(),
-      defaultOptions: {
-        query: {
-          fetchPolicy: "no-cache",
-          errorPolicy: "all",
-        },
-      },
     });
 
     const { data } = await client.query({
