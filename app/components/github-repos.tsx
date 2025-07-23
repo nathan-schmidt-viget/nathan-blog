@@ -1,89 +1,31 @@
 import Link from "next/link";
-import {
-  ApolloClient,
-  InMemoryCache,
-  createHttpLink,
-  gql,
-} from "@apollo/client";
-
-import { setContext } from "@apollo/client/link/context";
-
-interface Repo {
-  id: string;
-  name: string;
-  description: string | null;
-  htmlUrl: string;
-  stargazerCount: number;
-  primaryLanguage: { name: string } | null;
-  updatedAt: string;
-}
 
 export default async function GithubRepos() {
-  const httpLink = createHttpLink({
-    uri: "https://api.github.com/graphql",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/github`,
+    {
+      method: "POST",
+    }
+  );
 
-  const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
-    // return the headers to the context so httpLink can read them
-    return {
-      headers: {
-        ...headers,
-        authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-      },
-    };
-  });
+  if (!response.ok) {
+    console.error(
+      "Failed to fetch GitHub data:",
+      response.status,
+      response.statusText
+    );
+    return <div>Failed to load GitHub projects</div>;
+  }
 
-  const client = new ApolloClient({
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
-    query: gql`
-      {
-        user(login: "nathan-schmidt-viget") {
-          contributionsCollection {
-            contributionCalendar {
-              totalContributions
-            }
-          }
-          pinnedItems(first: 6) {
-            totalCount
-            edges {
-              node {
-                ... on Repository {
-                  id
-                  name
-                  url
-                  stargazerCount
-                  languages(first: 10) {
-                    edges {
-                      node {
-                        ... on Language {
-                          name
-                          color
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-  });
-  const { user } = data;
-  const pinnedItems = user.pinnedItems.edges.map(({ node }) => node);
+  const data = await response.json();
+  const pinnedItems = data.user.pinnedItems.edges.map(({ node }) => node);
 
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex flex-wrap items-end gap-4'>
         <h2 className='text-2xl font-bold tracking-tighter'>GitHub Projects</h2>
         <p className='text-sm text-neutral-500 dark:text-neutral-500'>
-          {user.contributionsCollection.contributionCalendar.totalContributions.toLocaleString()}{" "}
+          {data.user.contributionsCollection.contributionCalendar.totalContributions.toLocaleString()}{" "}
           contributions in the last year
         </p>
       </div>
