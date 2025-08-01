@@ -1,41 +1,68 @@
+"use client";
+import { useEffect, useState } from "react";
+
 import Link from "next/link";
 
-export default async function GithubRepos(): Promise<JSX.Element> {
-  try {
-    const response = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
-      }/api/github`,
-      {
-        method: "POST",
-        next: { revalidate: 3600 }, // Cache for 1 hour
-      }
-    );
+export default function GithubRepos() {
+  const [isPending, setIsPending] = useState(true);
+  const [data, setData] = useState(null);
+  const [pinnedItems, setPinnedItems] = useState([]);
 
-    if (!response.ok) {
-      console.error(
-        "Failed to fetch GitHub data:",
-        response.status,
-        response.statusText
+  async function fetchGit() {
+    setIsPending(true);
+    try {
+      const response = await fetch(
+        `${
+          process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+        }/api/github`,
+        {
+          method: "POST",
+          next: { revalidate: 3600 }, // Cache for 1 hour
+        }
       );
+      if (!response.ok) {
+        console.error(
+          "Failed to fetch GitHub data:",
+          response.status,
+          response.statusText
+        );
+      }
+      const data = await response.json();
+      setData(data);
+      setPinnedItems(data?.user?.pinnedItems.edges.map(({ node }) => node));
+      setIsPending(false);
+    } catch (error) {
+      console.error("Error fetching GitHub data:", error);
+      setIsPending(false);
+      return <div>Failed to load GitHub projects</div>;
     }
+  }
 
-    const data = await response.json();
-    const pinnedItems = data.user.pinnedItems.edges.map(({ node }) => node);
+  useEffect(() => {
+    fetchGit();
+  }, []);
 
-    return (
-      <div className='flex flex-col gap-4'>
-        <div className='flex flex-wrap items-end gap-4'>
-          <h2 className='text-2xl font-bold tracking-tighter'>
-            GitHub Projects
-          </h2>
-          <p className='text-sm text-neutral-500 dark:text-neutral-500'>
-            {data.user.contributionsCollection.contributionCalendar.totalContributions.toLocaleString()}{" "}
-            contributions in the last year
-          </p>
-        </div>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          {pinnedItems.map((repo) => (
+  return (
+    <div className='flex flex-col gap-4'>
+      <div className='flex flex-wrap items-end gap-4'>
+        <h2 className='text-2xl font-bold tracking-tighter'>GitHub Projects</h2>
+        <p className='text-sm text-neutral-500 dark:text-neutral-500'>
+          {isPending
+            ? ""
+            : data?.user?.contributionsCollection.contributionCalendar.totalContributions.toLocaleString() +
+              " contributions in the last year"}
+        </p>
+      </div>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        {isPending ? (
+          <>
+            <div className='min-h-24 py-3 px-4 border border-neutral-200 dark:border-neutral-800 rounded-lg'></div>
+            <div className='min-h-24 py-3 px-4 border border-neutral-200 dark:border-neutral-800 rounded-lg'></div>
+            <div className='min-h-24 py-3 px-4 border border-neutral-200 dark:border-neutral-800 rounded-lg'></div>
+            <div className='min-h-24 py-3 px-4 border border-neutral-200 dark:border-neutral-800 rounded-lg'></div>
+          </>
+        ) : (
+          pinnedItems.map((repo) => (
             <Link
               key={repo.id}
               href={repo.url}
@@ -72,12 +99,9 @@ export default async function GithubRepos(): Promise<JSX.Element> {
                 </div>
               </div>
             </Link>
-          ))}
-        </div>
+          ))
+        )}
       </div>
-    );
-  } catch (error) {
-    console.error("Error fetching GitHub data:", error);
-    return <div>Failed to load GitHub projects</div>;
-  }
+    </div>
+  );
 }
