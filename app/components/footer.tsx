@@ -24,10 +24,10 @@ export default function Footer(): JSX.Element {
             className='flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
             target='_blank'
-            href='/rss'
+            href='https://github.com/nathan-schmidt-viget'
           >
             <ArrowIcon />
-            <p className='ml-2 h-7'>rss</p>
+            <p className='ml-2 h-7'>github</p>
           </a>
         </li>
         <li>
@@ -35,10 +35,21 @@ export default function Footer(): JSX.Element {
             className='flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
             target='_blank'
-            href='https://github.com/nathan-schmidt-viget'
+            href='https://www.linkedin.com/in/nathanschmidtdeveloper/'
           >
             <ArrowIcon />
-            <p className='ml-2 h-7'>github</p>
+            <p className='ml-2 h-7'>linkedin</p>
+          </a>
+        </li>
+        <li>
+          <a
+            className='flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
+            rel='noopener noreferrer'
+            target='_blank'
+            href='/rss'
+          >
+            <ArrowIcon />
+            <p className='ml-2 h-7'>rss</p>
           </a>
         </li>
       </ul>
